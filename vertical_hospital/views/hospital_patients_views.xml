@@ -1,0 +1,65 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="vertical_hospital_view_list">
+      <field name="name">vertical_hospital_list</field>
+      <field name="model">hospital.patients</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="sequence"/>
+          <field name="name"/>
+          <field name="rnc"/>
+          <field name="state"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="hospital_patients_view_form">
+      <field name="name">vertical_hospital_form</field>
+      <field name="model">hospital.patients</field>
+      <field name="arch" type="xml">
+        <form>
+          <header>
+            <field name="state" widget="statusbar" options="{'clickable': '1'}"/>
+          </header>
+          <sheet>
+            <div class="oe_title">
+              <h1>
+                <field name="sequence"/>
+              </h1>
+            </div>
+            <group>
+              <group>
+                <field name="name"/>
+                <field name="rnc"/>
+                <field name="treatments" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                <field name="code" readonly="1" invisible="not treatments"/>
+                <field name="name_treatments" readonly="1" invisible="not treatments"/>
+              </group>
+              <group>
+                <field name="date_registration"/>
+                <field name="date_update"/>
+              </group>
+            </group>
+          </sheet>
+          <div class="oe_chatter">
+            <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+            <field name="activity_ids" widget="mail_activity"/>
+            <field name="message_ids" widget="mail_thread"/>
+          </div>
+        </form>
+      </field>
+    </record>
+
+    <record id="hospital_patients_action_window" model="ir.actions.act_window" >
+      <field name="name">Hospital</field>
+      <field name="res_model">hospital.patients</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Hospital" id="hospital_patients_menu_root"/>
+
+    <menuitem name="Pacientes" id="hospital_patients_menu" parent="hospital_patients_menu_root" action="hospital_patients_action_window"/>
+
+  </data>
+</odoo>

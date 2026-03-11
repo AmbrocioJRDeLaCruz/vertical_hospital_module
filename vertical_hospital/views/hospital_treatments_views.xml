@@ -1,0 +1,38 @@
+<odoo>
+    <record id="hospital_treatments_view_form" model="ir.ui.view">
+      <field name="name">hospital_treatments_view_form</field>
+      <field name="model">hospital.treatments</field>
+      <field name="arch" type="xml">
+        <form string="Hospital Treatments ">
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="code"/>
+              <field name="attending_physician"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="hospital_treatments_view_tree" model="ir.ui.view">
+      <field name="name">hospital_treatments_view_tree</field>
+      <field name="model">hospital.treatments</field>
+      <field name="arch" type="xml">
+        <tree string="Hospital Treatments">
+          <field name="name"/>
+          <field name="code"/>
+          <field name="attending_physician"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="hospital_treatments_action_window" model="ir.actions.act_window">
+      <field name="name">Tratamientos</field>
+      <field name="res_model">hospital.treatments</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Tratamientos" id="hospital_treatments_menu_root" parent="hospital_patients_menu_root"/>
+    <menuitem name="Tratamientos" id="hospital_treatments_menu" parent="hospital_treatments_menu_root" action="hospital_treatments_action_window"/>
+</odoo> 

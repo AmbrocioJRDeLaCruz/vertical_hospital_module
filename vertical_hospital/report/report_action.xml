@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_hospital_patient" model="ir.actions.report">
+        <field name="name">Consulta Paciente</field>
+        <field name="model">hospital.patients</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">vertical_hospital.consulta_paciente</field>
+        <field name="report_file">vertical_hospital.consulta_paciente</field>
+        <field name="print_report_name">(object.name or 'Paciente').replace('/', '')</field>
+        <field name="binding_model_id" ref="vertical_hospital.model_hospital_patients"/>
+        <field name="paperformat_id" ref="vertical_hospital.paperformat_consulta_paciente"/>
+        <field name="multi" eval="True"/>
+    </record>
+
+
+</odoo>
